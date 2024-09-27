@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+  <style>
+    *{
+    font-family:Arial, Helvetica, sans-serif;
+    box-sizing:border-box;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    grid-gap:20px;
+    max-width:1000px;
+    margin:0 auto;
+    overflow:hidden;
+}
+
+.gallery img{
+    width:100%;
+    height:180px;
+    padding:10px;
+    border:1px solid royalblue;
+    background:darkgrey;
+    object-fit:cover;
+}
+
+.gallery img:hover{
+    z-index:9;
+    transform:scale(1.3);
+    transition:transform ease 0.5s;
+}
+
+.gallery img.full{
+    position:fixed;
+    top:0; left:0; z-index:999;
+    width:100vw; height:100vh;
+    object-fit:contain;
+    background:rgba(0,0,0,0.7)
+}
+
+.gallery img.full:hover{
+    z-index:999;
+    transform:none;
+}
+
+@media only screen and (max-width:600px){
+    .gallery{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+}
+  </style>
+</head>
+<body>
+    <div class="gallery">
+        <img class="images" src="The_National_(Front_Cover)_2001 (1).png" title="title1">
+        <img class="images" src="The_National_Alligator.jpg" title="title2">
+        <img class="images" src="The_National_High_Violet_2010.jpg" title="title3">
+        <img class="images" src="The_National_Sleep_Well_Beast_2017.jpg" title="title4">
+        <img class="images" src="The_National_FTPOF_2023.jpg" title="title5">
+        <img class="images" src="The National_Laugh_Track_2023.jpg" title="title6">
+    </div>
+    <script>
+      window.onload=()=>{
+    for (let i of document.querySelectorAll(".gallery img")){
+     i.onclick = () => i.classList.toggle("full");   
+    }
+}
+    </script>
+</body>
+</html>
